@@ -1,0 +1,22 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+/media
+/static
+
+# VS Code
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
