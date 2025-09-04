@@ -1,0 +1,57 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Delete {{ student.name }} - Student Management System{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fas fa-exclamation-triangle"></i> Delete Student</h1>
+    <div class="page-actions">
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+    </div>
+</div>
+
+<div class="delete-container">
+    <div class="delete-card">
+        <div class="delete-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <h2>Are you sure?</h2>
+        <p>You are about to delete the following student:</p>
+        
+        <div class="student-summary">
+            <div class="summary-item">
+                <strong>Name:</strong> {{ student.name }}
+            </div>
+            <div class="summary-item">
+                <strong>Age:</strong> {{ student.age }}
+            </div>
+            <div class="summary-item">
+                <strong>Course:</strong> {{ student.course }}
+            </div>
+            <div class="summary-item">
+                <strong>Year Level:</strong> {{ student.get_year_level_display }}
+            </div>
+        </div>
+        
+        <div class="warning-message">
+            <i class="fas fa-exclamation-circle"></i>
+            This action cannot be undone. All student data will be permanently deleted.
+        </div>
+        
+        <form method="post" class="delete-form">
+            {% csrf_token %}
+            <div class="delete-actions">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Yes, Delete Student
+                </button>
+                <a href="{% url 'student_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

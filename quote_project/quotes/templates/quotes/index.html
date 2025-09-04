@@ -1,0 +1,37 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Random Quote Generator{% endblock %}
+
+{% block content %}
+<div class="quote-container text-center">
+    <h1 class="mb-4" style="color: #2c3e50; font-weight: bold;">
+        Random Quote Generator
+    </h1>
+    
+    {% if quote %}
+        <div class="quote-text">
+            "{{ quote.text }}"
+        </div>
+        <div class="quote-author">
+            — {{ quote.author }}
+        </div>
+        
+        <div class="mt-4">
+            <a href="{% url 'quotes:random_quote' %}" class="btn refresh-btn">
+                Get Another Quote
+            </a>
+        </div>
+    {% else %}
+        <div class="no-quotes">
+            <h3>No quotes available!</h3>
+            <p>Please add some quotes through the <a href="/admin/" class="text-decoration-none">admin panel</a>.</p>
+        </div>
+    {% endif %}
+    
+    <div class="mt-5">
+        <a href="/admin/" class="btn btn-outline-secondary">
+            Manage Quotes (Admin)
+        </a>
+    </div>
+</div>
+{% endblock %}
